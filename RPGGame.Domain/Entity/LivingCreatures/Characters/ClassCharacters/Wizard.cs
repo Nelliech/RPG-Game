@@ -4,18 +4,17 @@ using System.Text;
 
 namespace RPGGame.Domain.Entity.ClassCharacters
 {
-    public class Warrior : Character
+    public class Wizard : Character
     {
-        public Warrior(int id, string name, char sex)
+        public Wizard(int id, string name, char sex)
         {
             Id = id;
             Name = name;
             Sex = sex;
-            Strength = 15;
-            Luck = 10;
-            Intelligence = 5;
 
-            ClassCharacterId = 1;
+            ClassCharacterId = 2;
         }
+
+
     }
 }
