@@ -6,11 +6,9 @@ namespace RPGGame.Domain.Entity.ClassCharacters
 {
     public class Wizard : Character
     {
-        public Wizard(int id, string name, char sex)
+        public Wizard(int id, string name, char sex, int strength, int luck, int intelligence)
+            : base(id, name, sex, strength, luck, intelligence)
         {
-            Id = id;
-            Name = name;
-            Sex = sex;
 
             ClassCharacterId = 2;
         }

@@ -8,5 +8,6 @@ namespace RPGGame.Application.Concrete
 {
     public class ItemService : BaseService<Item>
     {
+        
     }
 }

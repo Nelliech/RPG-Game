@@ -17,7 +17,7 @@ namespace RPGGame.Domain.Entity
          int Intelligence { get; set; }
          int ClassCharacterId { get; set; }
     }
-    public abstract class Character : LivingCreature, ICharacter
+    public class Character : LivingCreature, ICharacter
     {
         public char Sex { get; set; }
         public int CurrentyManaPoint { get; set; }
@@ -28,6 +28,14 @@ namespace RPGGame.Domain.Entity
         public int Intelligence { get; set; }
         public int ClassCharacterId { get; set; }
 
-        
+        public Character(int id, string name, char sex, int strength,int luck, int intelligence)
+        {
+            Id = id;
+            Name = name;
+            Sex = sex;
+            Strength = strength;
+            Luck = luck;
+            Intelligence = intelligence;
+        }
     }
 }

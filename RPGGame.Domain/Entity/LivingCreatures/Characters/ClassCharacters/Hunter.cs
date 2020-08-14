@@ -6,11 +6,10 @@ namespace RPGGame.Domain.Entity.ClassCharacters
 {
     public class Hunter : Character
     {
-        public Hunter(int id, string name, char sex)
+        public Hunter(int id, string name, char sex, int strength, int luck, int intelligence)
+            : base(id, name, sex, strength, luck, intelligence)
         {
-            Id = id;
-            Name = name;
-            Sex = sex;
+
             ClassCharacterId = 3;
         }
     }

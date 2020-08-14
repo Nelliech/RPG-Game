@@ -30,14 +30,24 @@ namespace RPGGame.Application.Concrete
 
         private void Initialize()
         {
+            //Po odpaleniu gry
             AddItem(new MenuAction(1, "Stwórz Postać", "Start"));
             AddItem(new MenuAction(2, "Opóść Gre", "Start"));
-            
+            //Przy tworzeniu postaci
             AddItem(new MenuAction(1, "Wojownik", "CreateCharacter"));
             AddItem(new MenuAction(2, "Czarodziej", "CreateCharacter"));
             AddItem(new MenuAction(3, "Łowca", "CreateCharacter"));
+            //Po stworzeniu gry. Gra zaczyna się w domu!
+            AddItem(new MenuAction(1, "Wyjdź z mieszkania", "InHouse"));
+            //Domyślne opcje gracza
+            AddItem(new MenuAction(1, "Otwórz plecak", "CharacterOptions"));
+            AddItem(new MenuAction(2, "Zobacz statystyki.", "CharacterOptions"));
 
-           
+            //
+            AddItem(new MenuAction(1, "Rozejrzy się", ".."));
+
+
+
         }
     }
 }

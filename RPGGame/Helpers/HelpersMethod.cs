@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPGGame.Helpers
 {
-    public class Helpers
+    public static class Helpers
     {
         public static void CenterText(string text)
         {

@@ -6,11 +6,9 @@ namespace RPGGame.Domain.Entity.ClassCharacters
 {
     public class Warrior : Character
     {
-        public Warrior(int id, string name, char sex)
+        public Warrior(int id, string name, char sex, int strength, int luck, int intelligence) 
+            :base( id,  name,  sex,  strength,  luck,  intelligence)
         {
-            Id = id;
-            Name = name;
-            Sex = sex;
 
             ClassCharacterId = 1;
         }

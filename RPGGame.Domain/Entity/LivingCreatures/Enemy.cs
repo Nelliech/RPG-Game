@@ -9,3 +9,4 @@ namespace RPGGame.Domain.Entity
     {
 
     }
+}

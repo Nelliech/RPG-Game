@@ -16,6 +16,11 @@ namespace RPGGame.Application.Common
             Items = new List<T>();
         }
 
+        public List<T> GetAllItems()
+        {
+            return Items;
+        }
+
         public int GetLastId()
         {
             int lastId;
@@ -36,15 +41,20 @@ namespace RPGGame.Application.Common
             return items.Id;
         }
 
-        public int EditItem(T character)
+        public int EditItem(T items)
         {
-            var entity = Items.FirstOrDefault(p => p.Id == character.Id);
+            var entity = Items.FirstOrDefault(p => p.Id == items.Id);
             if (entity != null)
             {
-                entity = character;
+                entity = items;
             }
 
             return entity.Id;
+        }
+
+        public void RemoveItem(T items)
+        {
+            Items.Remove(items);
         }
     }
 }

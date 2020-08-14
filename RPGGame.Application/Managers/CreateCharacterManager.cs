@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RPGGame.Application.Concrete;
 using RPGGame.Domain.Entity;
+using RPGGame.Domain.Entity.ClassCharacters;
 
 namespace RPGGame.Application.Managers
 {
@@ -18,7 +19,7 @@ namespace RPGGame.Application.Managers
             
         }
 
-        public void CreateCharacter()
+        public int CreateCharacterPanel()
         {
             //Class Character
             Console.WriteLine("Wybierz swoją klase postaci !");
@@ -27,31 +28,32 @@ namespace RPGGame.Application.Managers
             {
                 Console.WriteLine($"{selectClass[i].Id} {selectClass[i].Name}");
             }
-            Int32.TryParse(Console.ReadKey().ToString(), out int selectedClass);
+            
+            Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out int selectedClass);
             //Name Character
             Console.Write("Podaj imię swojej postaci: ");
             string nameCharacter = Console.ReadLine();
             //Sex Charatcter
             Console.Write("\r\nPodaj płeć swojej postaci\r\n'M'= Mężczyzna\r\n'K'= Kobieta");
-            char sexCharacter=Console.ReadKey().KeyChar;
-            
+            char sexCharacter = Console.ReadKey().KeyChar;
+
             //Statistic Character
             int strength = 0;
             int luck = 0;
             int intelligence = 0;
             switch (selectedClass)
             {
-                case '1': //Warrior
-                     strength = 15;
-                     luck = 10;
-                     intelligence = 5;
+                case 1: //Warrior
+                    strength = 15;
+                    luck = 10;
+                    intelligence = 5;
                     break;
-                case '2': //Wizard
+                case 2: //Wizard
                     strength = 10;
                     luck = 5;
                     intelligence = 15;
                     break;
-                case '3':
+                case 3://Hunter
                     strength = 5;
                     luck = 15;
                     intelligence = 10;
@@ -61,13 +63,14 @@ namespace RPGGame.Application.Managers
             }
 
             int freePoints = 3;
-            while (freePoints!=0)
+            while (freePoints != 0)
             {
+                Console.WriteLine($"Dodaj dodatkowe punkty do swoich statystyk! Zostało Ci {freePoints} wolnych punktów!");
                 Console.WriteLine($"1. Siła : {strength} ");
                 Console.WriteLine($"2. Szczęście : {luck} ");
                 Console.WriteLine($"3. Inteligencja : {intelligence} ");
                 int selectedStatistic;
-                Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out  selectedStatistic);
+                Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedStatistic);
 
                 switch (selectedStatistic)
                 {
@@ -91,12 +94,35 @@ namespace RPGGame.Application.Managers
                 }
             }
 
-            //                                                 ----------------- To do
-            //Character character =
+            int idPlayer = 0;
+            /*
+            switch (selectedClass)
+            {
+                case 1:
+                    Warrior warrior = new Warrior(_characterService.GetLastId() + 1, nameCharacter,sexCharacter,strength,luck,intelligence);
+                    idPlayer=_characterService.AddItem(warrior);
+                    break;
+                    
+                case 2:
+                    Wizard wizzard =new Wizard(_characterService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence);
+                   idPlayer= _characterService.AddItem(wizzard);
+                    break;
 
+                case 3:
+                    Hunter hunter =new Hunter(_characterService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence);
+                    idPlayer=_characterService.AddItem(hunter);
+                    break;
 
+                default:
+                    break;
 
-
+            }
+            */
+            Character chare =new Character(_characterService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence);
+            idPlayer = _characterService.AddItem(chare);
+            return idPlayer;
         }
+
+        
     }
 }
