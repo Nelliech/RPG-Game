@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RPGGame.Application.Abstract;
 using RPGGame.Application.Concrete;
 using RPGGame.Domain.Entity;
 using RPGGame.Domain.Entity.ClassCharacters;
@@ -10,11 +11,11 @@ namespace RPGGame.Application.Managers
     public class CreateCharacterManager // Kontroler co użytkownik co chce zrobić i wywołuje uslugi z serviru. Tu są kroki decyzyjne.
     {
         private readonly MenuActionService _actionService;
-        private CharacterService _characterService;
+        private IService<Character> _itemIService;
 
-        public CreateCharacterManager(MenuActionService actionService)
+        public CreateCharacterManager(MenuActionService actionService, IService<Character> itemService)
         {
-            _characterService=new CharacterService();
+            _itemIService = itemService;
             _actionService = actionService;
             
         }
@@ -94,35 +95,15 @@ namespace RPGGame.Application.Managers
                 }
             }
 
-            int idPlayer = 0;
-            /*
-            switch (selectedClass)
-            {
-                case 1:
-                    Warrior warrior = new Warrior(_characterService.GetLastId() + 1, nameCharacter,sexCharacter,strength,luck,intelligence);
-                    idPlayer=_characterService.AddItem(warrior);
-                    break;
-                    
-                case 2:
-                    Wizard wizzard =new Wizard(_characterService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence);
-                   idPlayer= _characterService.AddItem(wizzard);
-                    break;
-
-                case 3:
-                    Hunter hunter =new Hunter(_characterService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence);
-                    idPlayer=_characterService.AddItem(hunter);
-                    break;
-
-                default:
-                    break;
-
-            }
-            */
-            Character chare =new Character(_characterService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence);
-            idPlayer = _characterService.AddItem(chare);
-            return idPlayer;
+            Character character =new Character(_itemIService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence,selectedClass);
+            _itemIService.AddItem(character);
+            return character.Id;
+        }
+        public Character GetItemById(int id)
+        {
+            var item = _itemIService.GetItemById(id);
+            return item;
         }
 
-        
     }
 }

@@ -37,14 +37,20 @@ namespace RPGGame.Application.Concrete
             AddItem(new MenuAction(1, "Wojownik", "CreateCharacter"));
             AddItem(new MenuAction(2, "Czarodziej", "CreateCharacter"));
             AddItem(new MenuAction(3, "Łowca", "CreateCharacter"));
-            //Po stworzeniu gry. Gra zaczyna się w domu!
-            AddItem(new MenuAction(1, "Wyjdź z mieszkania", "InHouse"));
+
             //Domyślne opcje gracza
-            AddItem(new MenuAction(1, "Otwórz plecak", "CharacterOptions"));
-            AddItem(new MenuAction(2, "Zobacz statystyki.", "CharacterOptions"));
+            AddItem(new MenuAction(1, "Zobacz statystyki.", "CharacterOptions"));
+            AddItem(new MenuAction(2, "Otwórz plecak", "CharacterOptions"));
+            AddItem(new MenuAction(3, "Rozejrzy się", "CharacterOptions"));
+            AddItem(new MenuAction(0, "Wyjdź z gry!", "CharacterOptions"));
+            //Po wybraniu przedmiotu w plecaku: jeśli można ubrać
+            AddItem(new MenuAction(1, "Zobacz statystyki.", "ItemOptions"));
+            AddItem(new MenuAction(2, "Załóż Przedmiot", "ItemOptions"));
+            AddItem(new MenuAction(3, "Wyrzuć przedmiot", "ItemOptions"));
+            AddItem(new MenuAction(0, "Wróc", "ItemOptions"));
 
             //
-            AddItem(new MenuAction(1, "Rozejrzy się", ".."));
+
 
 
 

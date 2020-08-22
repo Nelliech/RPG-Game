@@ -9,11 +9,12 @@ namespace RPGGame.Application.Abstract
         List<T> Items { get; set; }
 
         int GetLastId();
-        int AddItem(T items);
+        List<T> GetAllItems();
+        int AddItem(T item);
+        int EditItem(T item);
+        T GetItemById(int id);
+        void RemoveItem(T item);
+        int UpdateItem(T item);
 
-        int EditItem(T items);
-
-        void RemoveItem(T items);
-
-    }
+    }   
 }

@@ -35,26 +35,40 @@ namespace RPGGame.Application.Common
 
             return lastId;
         }
-        public int AddItem(T items)
+        public int AddItem(T item)
         {
-            Items.Add(items);
-            return items.Id;
+            Items.Add(item);
+            return item.Id;
         }
 
-        public int EditItem(T items)
+        public int EditItem(T item)
         {
-            var entity = Items.FirstOrDefault(p => p.Id == items.Id);
+            var entity = Items.FirstOrDefault(p => p.Id == item.Id);
             if (entity != null)
             {
-                entity = items;
+                entity = item;
             }
 
             return entity.Id;
         }
 
-        public void RemoveItem(T items)
+        public void RemoveItem(T item)
         {
-            Items.Remove(items);
+            Items.Remove(item);
+        }
+        public T GetItemById(int id)    
+        {
+            var entity = Items.FirstOrDefault(p => p.Id == id);
+            return entity;
+        }
+        public int UpdateItem(T item)
+        {
+            var entity = Items.FirstOrDefault(p => p.Id == item.Id);
+            if (entity != null)
+            {
+                entity = item;
+            }
+            return entity.Id;
         }
     }
 }
