@@ -14,7 +14,7 @@ namespace RPGGame.Application.Managers
         private readonly MenuActionService _actionService;
         private readonly InventoryService _inventoryService;
         private IService<Item> _itemIService;
-        
+        InventoryService _iInventoryService2=new InventoryService();
 
 
         public InventoryManager(MenuActionService actionService, IService<Item> itemIService, InventoryService inventoryService)
@@ -24,11 +24,13 @@ namespace RPGGame.Application.Managers
             _inventoryService = inventoryService;
         }
 
-        public Item ShowItemsInInventory() //Done no niee.... Musi wykorzystywać klase inventory oraz zawartą w niej liste!
+        public Item ShowItemsInInventory(int playerId) //Done no niee.... Musi wykorzystywać klase inventory oraz zawartą w niej liste!
         {
             Console.WriteLine("Przedmioty w twoim plecaku:");
-            var itemsInveontory = ShowItems();
 
+            var itemsInveontory = _inventoryService.GetItemsFromInventory(_itemIService.GetAllItems(), playerId);
+            ShowItems(itemsInveontory);
+            
             Console.WriteLine("0.Wróć");
             Console.WriteLine("Wybierz przedmiot:");
             Int32.TryParse(Console.ReadKey().KeyChar.ToString(), out int selectedoption);
@@ -42,9 +44,9 @@ namespace RPGGame.Application.Managers
             return selectedItem;
         }
         
-        public List<Item> ShowItems() // Chyba Done
+        public List<Item> ShowItems(List<Item>items) 
         {
-            var items = _itemIService.GetAllItems();
+            //var items = _itemIService.GetAllItems();
             int howManyItems = 1;
             foreach (var item in items)
             {

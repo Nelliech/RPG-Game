@@ -20,7 +20,7 @@ namespace RPGGame
             InventoryService _inventoryService=new InventoryService();
 
             InventoryManager _inventoryManager=new InventoryManager(_actionService,_itemService,_inventoryService);
-            CreateCharacterManager _createCharacterManager = new CreateCharacterManager(_actionService, _characterService);
+            CreateCharacterManager _createCharacterManager = new CreateCharacterManager(_actionService, _characterService, _inventoryService,_itemService);
 
             var playerId =_createCharacterManager.CreateCharacterPanel();
 

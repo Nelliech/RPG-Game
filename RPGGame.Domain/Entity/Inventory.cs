@@ -13,6 +13,7 @@ namespace RPGGame.Domain.Entity
 
         public Inventory(List<Item> itemsInBackpack, int playerId)
         {
+            Id = playerId;
             ItemsInBackpack = itemsInBackpack;
             PlayerId = playerId;
         }

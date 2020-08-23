@@ -14,18 +14,6 @@ namespace RPGGame.Application.Concrete.ItemsServices
 
         public void ShowStatistic(Weapon weapon) // Probleeem
         {
-            /*
-            //var id = Items.FirstOrDefault(p => p.Id == idItem).Id;
-            var name = Items.FirstOrDefault(p => p.Id == idItem).Name;
-            var description = Items.FirstOrDefault(p => p.Id == idItem).Description;
-            var magicPower = Items.FirstOrDefault(p => p.Id == idItem).MagicPower;
-            var physicalStrength = Items.FirstOrDefault(p => p.Id == idItem).PhysicalStrength;
-            *
-            Console.WriteLine($"Nazwa Przedmiotu: {name}\r\n" +
-                              $"Opis: {description}\r\n" +
-                              $"Moc Fizyczna Broni: {physicalStrength}\r\n" +
-                              $"Moc Magiczna Broni: {magicPower}\r\n");
-            */
             Console.WriteLine($"Nazwa Przedmiotu: {weapon.Name}\r\n" +
                               $"Opis: {weapon.Description}\r\n" +
                               $"Moc Fizyczna Broni: {weapon.PhysicalStrength}\r\n" +
@@ -44,11 +32,7 @@ namespace RPGGame.Application.Concrete.ItemsServices
         }
         public void Initialize()
         {
-            /*
-            //Tu powinny być wszystkie przedmioty którę znajdują się w grze tak na logike.. Potrzeba nogeo property: Przedmiot przypisany do postaci po ID 
-            AddItem(new Weapon(1, "Magiczny Miecz", "Jakis tam bla bla", 11.3, 32.1));
-            AddItem(new Weapon(2, "Łuczek", "Jakis taki ładny", 15.2, 23.1));
-            */
+
         }
     }
 }

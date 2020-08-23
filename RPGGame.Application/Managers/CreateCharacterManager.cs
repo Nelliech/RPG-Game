@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using System.Text;
 using RPGGame.Application.Abstract;
 using RPGGame.Application.Concrete;
+using RPGGame.Application.Concrete.ItemsServices;
 using RPGGame.Domain.Entity;
 using RPGGame.Domain.Entity.ClassCharacters;
+using RPGGame.Domain.Entity.Items;
 
 namespace RPGGame.Application.Managers
 {
     public class CreateCharacterManager // Kontroler co użytkownik co chce zrobić i wywołuje uslugi z serviru. Tu są kroki decyzyjne.
     {
         private readonly MenuActionService _actionService;
-        private IService<Character> _itemIService;
+        private IService<Character> _characterIService;
+        private IService<Inventory> _inventoryIService;
+        private IService<Item> _itemIService;
 
-        public CreateCharacterManager(MenuActionService actionService, IService<Character> itemService)
+
+        ItemService _itemService =new ItemService();
+        InventoryService _inventoryService=new InventoryService();
+        public CreateCharacterManager(MenuActionService actionService, IService<Character> characterIService, IService<Inventory> inventoryIService, IService<Item> itemIService)
         {
-            _itemIService = itemService;
+            _characterIService = characterIService;
             _actionService = actionService;
-            
+            _inventoryIService = inventoryIService;
+            _itemIService = itemIService;
         }
 
         public int CreateCharacterPanel()
@@ -95,13 +103,21 @@ namespace RPGGame.Application.Managers
                 }
             }
 
-            Character character =new Character(_itemIService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence,selectedClass);
-            _itemIService.AddItem(character);
+            Character character =new Character(_characterIService.GetLastId() + 1, nameCharacter, sexCharacter, strength, luck, intelligence,selectedClass);
+            _characterIService.AddItem(character);
+
+            List<Item> itemList=_itemService.StartItems();
+            List<Item> startItemList=_inventoryService.AddItemsToInventory(itemList,character.Id);
+            _itemIService.AddItems(startItemList);
+
+            Inventory inventoryCharacter=new Inventory(startItemList,character.Id);
+            _inventoryIService.AddItem(inventoryCharacter);
+
             return character.Id;
         }
         public Character GetItemById(int id)
         {
-            var item = _itemIService.GetItemById(id);
+            var item = _characterIService.GetItemById(id);
             return item;
         }
 

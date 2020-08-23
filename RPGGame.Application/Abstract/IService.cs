@@ -11,6 +11,7 @@ namespace RPGGame.Application.Abstract
         int GetLastId();
         List<T> GetAllItems();
         int AddItem(T item);
+        List<T> AddItems(List<T> items);
         int EditItem(T item);
         T GetItemById(int id);
         void RemoveItem(T item);

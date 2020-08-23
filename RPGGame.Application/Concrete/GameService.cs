@@ -45,7 +45,7 @@ namespace RPGGame.Application.Concrete
                         Console.WriteLine("Wciśnij klawisz żeby wrócić");
                         break;
                     case 2://InProcess
-                        var selectedItem = _inventoryManager.ShowItemsInInventory();
+                        var selectedItem = _inventoryManager.ShowItemsInInventory(playerId);
                         _itemManager.ShowItemManager(selectedItem);
                         break;
                     case 3:

@@ -4,6 +4,7 @@ using System.Text;
 using RPGGame.Application.Abstract;
 using RPGGame.Application.Concrete;
 using RPGGame.Application.Concrete.ItemsServices;
+using RPGGame.Domain.Entity;
 using RPGGame.Domain.Entity.Items;
 using RPGGame.Domain.Entity.Items.CategoryItems.Weapons;
 
@@ -26,7 +27,17 @@ namespace RPGGame.Application.Managers
 
         public void ShowItemManager(Item item)
         {
-            var itemOptionsList = _menuActionService.GetMenuActionsByMenuName("ItemOptions");
+            List<MenuAction> itemOptionsList=new List<MenuAction>();
+            if (item.CategoryItemId == 1)
+            {
+                itemOptionsList = _menuActionService.GetMenuActionsByMenuName("ItemOptionsWeapon");
+            }
+            else
+            {
+                itemOptionsList = _menuActionService.GetMenuActionsByMenuName("ItemOptionsConsumable");
+
+            }
+
             foreach (var itemOption in itemOptionsList)
             {
                 Console.WriteLine($"{itemOption.Id}.{itemOption.Name}");

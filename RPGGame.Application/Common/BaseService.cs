@@ -41,6 +41,16 @@ namespace RPGGame.Application.Common
             return item.Id;
         }
 
+        public List<T> AddItems(List<T> items)
+        {
+            foreach (var item in items)
+            {
+                Items.Add(item);
+            }
+
+            return items;
+        }
+
         public int EditItem(T item)
         {
             var entity = Items.FirstOrDefault(p => p.Id == item.Id);

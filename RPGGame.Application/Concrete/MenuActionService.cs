@@ -44,11 +44,15 @@ namespace RPGGame.Application.Concrete
             AddItem(new MenuAction(3, "Rozejrzy się", "CharacterOptions"));
             AddItem(new MenuAction(0, "Wyjdź z gry!", "CharacterOptions"));
             //Po wybraniu przedmiotu w plecaku: jeśli można ubrać
-            AddItem(new MenuAction(1, "Zobacz statystyki.", "ItemOptions"));
-            AddItem(new MenuAction(2, "Załóż Przedmiot", "ItemOptions"));
-            AddItem(new MenuAction(3, "Wyrzuć przedmiot", "ItemOptions"));
-            AddItem(new MenuAction(0, "Wróc", "ItemOptions"));
+            AddItem(new MenuAction(1, "Zobacz statystyki.", "ItemOptionsWeapon"));
+            AddItem(new MenuAction(2, "Załóż Przedmiot", "ItemOptionsWeapon"));
+            AddItem(new MenuAction(3, "Wyrzuć przedmiot", "ItemOptionsWeapon"));
+            AddItem(new MenuAction(0, "Wróc", "ItemOptionsWeapon"));
 
+            AddItem(new MenuAction(1, "Zobacz statystyki.", "ItemOptionsConsumable"));
+            AddItem(new MenuAction(2, "Użyj Przedmiot", "ItemOptionsConsumable"));
+            AddItem(new MenuAction(3, "Wyrzuć przedmiot", "ItemOptionsConsumable"));
+            AddItem(new MenuAction(0, "Wróc", "ItemOptionsConsumable"));
             //
 
 
