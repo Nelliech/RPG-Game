@@ -15,6 +15,7 @@ namespace RPGGame.Application.Managers
         public readonly ItemService _itemService;
         public readonly IService<Item> _itemIService;
         WeaponService _weaponService = new WeaponService();
+        ConsumablesService _consumablesService = new ConsumablesService();
         private IService<Weapon> _weaponIService;
         public ItemManager(MenuActionService menuActionService, IService<Item> itemIService,IService<Weapon> weaponIService)
         {
@@ -36,19 +37,19 @@ namespace RPGGame.Application.Managers
             switch (selectedOption)
             {
                 case 1:
+
                     if (item.CategoryItemId == 1)//Weapon
                     {
                         _weaponService.ShowStatistic((Weapon)item);
-                    }else if (item.CategoryItemId == 2)//Other
+                    }else//Other
                     {
-                        //Stworz classe dla innych przedmiotów i analogicznie xD
+                        _consumablesService.ShowStatistic((Consumables)item);
                     }
-                    else
-                    {
+                    
+                    break;
 
-                    }
-                        break;
                 case 2:
+
                     if (item.CategoryItemId == 1)
                     {
                         _weaponService.PutWeapon(item.Id);
